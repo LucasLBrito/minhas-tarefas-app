@@ -1,24 +1,25 @@
 import Tarefa from '../../../components/tarefa'
 import * as S from './styles'
+import { Prioridade, Status } from '../../../utils/enums/tarefas'
 
 const tarefasExemplo = [
   {
     titulo: 'Estudar React',
     descricao: 'Estudar React',
-    prioridade: 'importante',
-    status: 'pendente'
+    prioridade: Prioridade.IMPORTANTE,
+    status: Status.PENDENTE
   },
   {
     titulo: 'Pagar faculdade',
     descricao: 'Pagar faculdade',
-    prioridade: 'Urgente',
-    status: 'concluida'
+    prioridade: Prioridade.URGENTE,
+    status: Status.CONCLUIDA
   },
   {
     titulo: 'Ir a acadamia',
     descricao: 'Ir a acadamia',
-    prioridade: 'Urgente',
-    status: 'pendente'
+    prioridade: Prioridade.URGENTE,
+    status: Status.PENDENTE
   }
 ]
 
