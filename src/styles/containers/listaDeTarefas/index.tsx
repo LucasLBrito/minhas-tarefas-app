@@ -1,7 +1,43 @@
-const listaDeTarefas = () => (
-  <main>
+import Tarefa from '../../../components/tarefa'
+import * as S from './styles'
+
+const tarefasExemplo = [
+  {
+    titulo: 'Estudar React',
+    descricao: 'Estudar React',
+    prioridade: 'importante',
+    status: 'pendente'
+  },
+  {
+    titulo: 'Pagar faculdade',
+    descricao: 'Pagar faculdade',
+    prioridade: 'Urgente',
+    status: 'concluida'
+  },
+  {
+    titulo: 'Ir a acadamia',
+    descricao: 'Ir a acadamia',
+    prioridade: 'Urgente',
+    status: 'pendente'
+  }
+]
+
+const ListaDeTarefas = () => (
+  <S.MainContainer>
     <p> 2 tarefas marcadas como: &quot;categoria&quot; e &quot;tempos&quot;</p>
-  </main>
+    <ul>
+      {tarefasExemplo.map((t) => (
+        <li key={t.titulo}>
+          <Tarefa
+            titulo={t.titulo}
+            descricao={t.descricao}
+            prioridade={t.prioridade}
+            status={t.status}
+          />
+        </li>
+      ))}
+    </ul>
+  </S.MainContainer>
 )
 
-export default listaDeTarefas
+export default ListaDeTarefas

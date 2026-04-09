@@ -2,12 +2,14 @@ import { Card, Contador, Label } from './styles'
 
 export type Props = {
   ativo?: boolean
+  contador: number
+  legenda: string
 }
 
-const FiltroCard = ({ ativo }: Props) => (
+const FiltroCard = ({ ativo, contador, legenda }: Props) => (
   <Card ativo={ativo}>
-    <Contador>3</Contador>
-    <Label>pendentes</Label>
+    <Contador>{contador}</Contador>
+    <Label>{legenda}</Label>
   </Card>
 )
 
