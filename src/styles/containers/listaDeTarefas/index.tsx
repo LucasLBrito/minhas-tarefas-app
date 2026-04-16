@@ -4,7 +4,7 @@ import * as S from './styles'
 import { useSelector } from 'react-redux'
 
 const ListaDeTarefas = () => {
-  const { tarefas } = useSelector((state: RootReducer) => state)
+  const { itens } = useSelector((state: RootReducer) => state.tarefas)
   return (
     <S.MainContainer>
       <p>
@@ -12,13 +12,14 @@ const ListaDeTarefas = () => {
         2 tarefas marcadas como: &quot;categoria&quot; e &quot;tempos&quot;
       </p>
       <ul>
-        {tarefas.map((t) => (
+        {itens.map((t) => (
           <li key={t.titulo}>
             <Tarefa
               titulo={t.titulo}
               descricao={t.descricao}
               prioridade={t.prioridade}
-              status={t.estado}
+              estado={t.estado}
+              id={t.id}
             />
           </li>
         ))}
