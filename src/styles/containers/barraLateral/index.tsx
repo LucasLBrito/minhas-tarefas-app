@@ -1,18 +1,52 @@
 import FiltroCard from '../../../components/FiltroCard'
 import { Aside, Campo, Filtros } from './styles'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../../store'
+import { alteraTermo } from '../../../store/reducers/filtro'
+import * as enums from '../../../utils/enums/tarefas'
 
-const barraLateral = () => (
-  <Aside>
-    <Campo type="text" placeholder="Buscar" />
-    <Filtros>
-      <FiltroCard contador={1} legenda="pendentes" ativo />
-      <FiltroCard contador={2} legenda="concluídas" />
-      <FiltroCard contador={3} legenda="urgentes" />
-      <FiltroCard contador={4} legenda="importantes" />
-      <FiltroCard contador={5} legenda="normal" />
-      <FiltroCard contador={6} legenda="todas" />
-    </Filtros>
-  </Aside>
-)
+const BarraLateral = () => {
+  const dispatch = useDispatch()
+  const { termo } = useSelector((state: RootReducer) => state.filtro)
 
-export default barraLateral
+  return (
+    <Aside>
+      <Campo
+        type="text"
+        placeholder="Buscar"
+        value={termo}
+        onChange={(e) => dispatch(alteraTermo(e.target.value))}
+      />
+      <Filtros>
+        <FiltroCard
+          criterio="status"
+          valor={enums.Status.PENDENTE}
+          legenda="pendentes"
+        />
+        <FiltroCard
+          criterio="status"
+          valor={enums.Status.CONCLUIDA}
+          legenda="concluídas"
+        />
+        <FiltroCard
+          criterio="prioridade"
+          valor={enums.Prioridade.URGENTE}
+          legenda="urgentes"
+        />
+        <FiltroCard
+          criterio="prioridade"
+          valor={enums.Prioridade.IMPORTANTE}
+          legenda="importantes"
+        />
+        <FiltroCard
+          criterio="prioridade"
+          valor={enums.Prioridade.NORMAL}
+          legenda="normal"
+        />
+        <FiltroCard criterio="todas" legenda="todas" />
+      </Filtros>
+    </Aside>
+  )
+}
+
+export default BarraLateral
