@@ -1,5 +1,6 @@
 import FiltroCard from '../../../components/FiltroCard'
-import { Aside, Campo, Filtros } from './styles'
+import { Aside, Filtros } from './styles'
+import { Campo } from '../../index'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../../store'
 import { alteraTermo } from '../../../store/reducers/filtro'

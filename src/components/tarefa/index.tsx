@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { removerTarefa, editarTarefa } from '../../store/reducers/tarefas'
 import TarefaModel from '../../models/Tarefas'
+import { Botao, BotaoSalvar, BotaoCancelarRemover } from '../../styles'
 
 type Props = TarefaModel
 
@@ -37,7 +38,7 @@ const Tarefa = ({
         {estaEditando ? (
           // Se estiver editando, mostra os botões Salvar e Cancelar
           <>
-            <S.botaoSalvar
+            <BotaoSalvar
               onClick={() => {
                 dispatch(
                   editarTarefa({
@@ -52,8 +53,8 @@ const Tarefa = ({
               }}
             >
               Salvar
-            </S.botaoSalvar>
-            <S.botaoCancelarRemover
+            </BotaoSalvar>
+            <BotaoCancelarRemover
               type="button"
               onClick={() => {
                 setEstaEditando(false)
@@ -61,15 +62,15 @@ const Tarefa = ({
               }}
             >
               Cancelar
-            </S.botaoCancelarRemover>
+            </BotaoCancelarRemover>
           </>
         ) : (
           // Se não estiver editando, mostra os botões Editar e Excluir
           <>
-            <S.Botao onClick={() => setEstaEditando(true)}>Editar</S.Botao>
-            <S.botaoCancelarRemover onClick={() => dispatch(removerTarefa(id))}>
+            <Botao onClick={() => setEstaEditando(true)}>Editar</Botao>
+            <BotaoCancelarRemover onClick={() => dispatch(removerTarefa(id))}>
               Excluir
-            </S.botaoCancelarRemover>
+            </BotaoCancelarRemover>
           </>
         )}
       </S.BarraAcoes>

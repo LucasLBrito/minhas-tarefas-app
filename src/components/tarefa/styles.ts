@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
 import { Prioridade, Status } from '../../utils/enums/tarefas'
+import { Botao } from '../../styles'
 
 type TagProps = {
   prioridade?: Prioridade
@@ -61,24 +62,4 @@ export const Descricao = styled.textarea`
 export const BarraAcoes = styled.div`
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 16px;
-`
-
-export const Botao = styled.button`
-  font-size: 12px;
-  font-weight: bold;
-  color: #fff;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: #2f3640;
-  margin-right: 8px;
-`
-
-export const botaoSalvar = styled(Botao)`
-  background-color: ${variaveis.verde};
-`
-
-export const botaoCancelarRemover = styled(Botao)`
-  background-color: ${variaveis.vermelho};
 `
