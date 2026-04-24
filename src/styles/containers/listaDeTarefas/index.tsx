@@ -31,21 +31,27 @@ const ListaDeTarefas = () => {
     }
     return TarefasFiltradas
   }
+  const tarefasDoFiltro = filtrarTarefas()
 
+  const exibeResultadoDoFiltro = (quantidade: number) => {
+    let mensagem = ''
+    if (criterio === 'todas') {
+      mensagem = `${quantidade} tarefas como : todas ${
+        termo !== undefined && termo.length > 0 ? `e "${termo}"` : ''
+      }`
+    } else {
+      mensagem = `${quantidade} tarefas como : ${criterio} = ${valor} ${
+        termo !== undefined && termo.length > 0 ? `e "${termo}"` : ''
+      }`
+    }
+    return mensagem
+  }
+  const mensagemDoFiltro = exibeResultadoDoFiltro(tarefasDoFiltro.length)
   return (
     <S.MainContainer>
-      <p>
-        {' '}
-        2 tarefas marcadas como: &quot;categoria&quot; e &quot;{termo}
-        &quot;
-      </p>
+      <S.Resultado>{mensagemDoFiltro}</S.Resultado>
       <ul>
-        <li>{termo}</li>
-        <li>{criterio}</li>
-        <li>{valor}</li>
-      </ul>
-      <ul>
-        {filtrarTarefas().map((t) => (
+        {tarefasDoFiltro.map((t) => (
           <li key={t.titulo}>
             <Tarefa
               titulo={t.titulo}
