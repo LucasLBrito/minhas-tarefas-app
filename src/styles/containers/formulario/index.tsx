@@ -17,13 +17,12 @@ const Formulario = () => {
 
   const cadastrar = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const tarefaParaAdicionar = new Tarefa(
+    const tarefaParaAdicionar: Omit<Tarefa, 'id'> = {
       titulo,
       descricao,
-      9,
       prioridade,
-      enums.Status.PENDENTE
-    )
+      estado: enums.Status.PENDENTE
+    }
     dispatch(adicionarTarefa(tarefaParaAdicionar))
     navigate('/')
   }
@@ -62,7 +61,7 @@ const Formulario = () => {
             </Option>
           ))}
         </Opcao>
-        <BotaoSalvar>Cadastrar</BotaoSalvar>
+        <BotaoSalvar type="submit">Cadastrar</BotaoSalvar>
       </Form>
     </MainContainer>
   )

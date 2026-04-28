@@ -10,10 +10,13 @@ export const Form = styled.form`
   textarea {
     resize: none;
     margin: 16px 0;
+    height: 150px;
   }
 `
 export const Opcao = styled.div`
   margin: 16px 0;
+  padding-left: 5px;
+
   p {
     margin-bottom: 6px;
   }

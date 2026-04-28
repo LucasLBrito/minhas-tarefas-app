@@ -4,17 +4,17 @@ import { Prioridade, Status } from '../../utils/enums/tarefas'
 import { Botao } from '../../styles'
 
 type TagProps = {
-  prioridade?: Prioridade
-  status?: Status
+  $prioridade?: Prioridade
+  $status?: Status
 }
 
 function corDeFundoTag(props: TagProps) {
-  if ('status' in props) {
-    if (props.status === Status.PENDENTE) return variaveis.amarelo
-    if (props.status === Status.CONCLUIDA) return variaveis.verde
-  } else if ('prioridade' in props) {
-    if (props.prioridade === Prioridade.URGENTE) return variaveis.vermelho
-    if (props.prioridade === Prioridade.IMPORTANTE)
+  if ('$status' in props) {
+    if (props.$status === Status.PENDENTE) return variaveis.amarelo
+    if (props.$status === Status.CONCLUIDA) return variaveis.verde
+  } else if ('$prioridade' in props) {
+    if (props.$prioridade === Prioridade.URGENTE) return variaveis.vermelho
+    if (props.$prioridade === Prioridade.IMPORTANTE)
       return variaveis.amarelo_escuro
   }
   return '#ccc'
@@ -26,12 +26,19 @@ export const Card = styled.div`
   padding: 16px;
   margin-bottom: 32px;
   border-radius: 16px;
+
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 16px;
+  }
 `
 
 export const Titulo = styled.h3`
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-left: 8px;
 `
 
 export const Tag = styled.span<TagProps>`
